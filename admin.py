@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shared.django_securest.models import SecurestToken
+from .models import SecurestToken
 
 admin.site.register(
     SecurestToken,

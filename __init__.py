@@ -1,3 +1,3 @@
-from shared.django_securest.apps import DjangoSecurestConfig
+from .apps import DjangoSecurestConfig
 
 default_app_config = '{}.apps.DjangoSecurestConfig'.format(DjangoSecurestConfig.name)

@@ -5,8 +5,6 @@ from rest_framework import exceptions
 from rest_framework.authentication import BaseAuthentication, get_authorization_header
 from rest_framework.settings import api_settings
 
-from shared.django_securest.models import SecurestToken, API_KEY_LENGTH
-
 ACCEPTABLE_TIME_DIFF = 5  # seconds
 
 
@@ -19,6 +17,7 @@ def get_secret(api_key: str, nonce: str, secret_key: str):
 
 
 def validate_api_key(api_key: str):
+    from .apps import API_KEY_LENGTH
     if type(api_key) is not str or len(api_key) != API_KEY_LENGTH:
         return
 
@@ -57,6 +56,7 @@ class SecurestRestFrameworkAuthentication(BaseAuthentication):
         Returns a `User` if the request contain valid securest token.
         Otherwise returns `None`.
         """
+        from .models import SecurestToken
 
         auth = get_authorization_header(request).split()
         if not auth or auth[0].lower() != b'securest':

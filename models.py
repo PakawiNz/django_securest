@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.crypto import get_random_string
 
-API_KEY_LENGTH = 64
-SECRET_KEY_LENGTH = 64
+from .apps import API_KEY_LENGTH, SECRET_KEY_LENGTH
 
 
 class SecurestToken(models.Model):
